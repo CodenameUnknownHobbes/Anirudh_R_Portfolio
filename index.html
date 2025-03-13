@@ -146,13 +146,12 @@
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            font-family: 'Courier New', monospace;
+            font-size: 2.2rem;
+            margin-right: 20px;
+            text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
             letter-spacing: 2px;
-            position: relative;
-            text-shadow: 0 0 5px var(--shadow-color);
+            overflow: visible;
+            padding: 0 10px;
         }
         
         .logo::before {
@@ -862,6 +861,89 @@
                 text-align: center;
             }
         }
+        
+        /* Typing animation styles */
+        .typing-container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        #typed-name {
+            color: var(--primary-color);
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--primary-color);
+            width: 0;
+            font-size: calc(3.5rem - 3pt);
+            animation: 
+                typing 1.5s steps(7, end) forwards,
+                blink 0.75s step-end infinite,
+                typingReset 20s infinite;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 8.5ch }
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+        
+        @keyframes typingReset {
+            0% { width: 0 }
+            10% { width: 8.5ch }
+            45% { width: 8.5ch }
+            50% { width: 0 }
+            55% { width: 0 }
+            65% { width: 8.5ch }  
+            95% { width: 8.5ch }
+            100% { width: 0 }
+        }
+        
+        /* Matrix-like animation in the background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        /* Fix for technology cells */
+        .tech-item {
+            display: flex;
+            align-items: center;
+            background-color: white !important;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #d0d0d0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .tech-icon {
+            margin-right: 1rem;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .tech-name {
+            font-weight: 900 !important;
+            font-size: 1.1rem !important;
+            color: #000000 !important;
+            letter-spacing: 0.5px;
+            font-family: Arial, sans-serif !important;
+            text-shadow: none !important;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
@@ -892,13 +974,13 @@
                 <h2 class="hero-subheading">Information Analyst & Solutions Architect</h2>
                 <p class="hero-description">Delivering critical business insights through advanced data systems while safeguarding your digital infrastructure against emerging threats. My dual expertise in information analysis and cybersecurity creates secure, intelligent solutions that power business success.</p>
                 <div class="hero-buttons">
-                    <a href="#about" class="btn">Learn More</a>
+                    <a href="#about" class="btn" style="background-color: #134e5e; color: #ffffff; border: 2px solid #00ff8c; text-shadow: 0 0 8px rgba(0, 255, 140, 0.7); font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 140, 0.5);">Learn More</a>
                     <a href="#contact" class="btn" style="background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">Contact Me</a>
                 </div>
             </div>
             
             <div class="hero-image">
-                <img src="/api/placeholder/600/500" alt="Your Profile" class="hero-img">
+                <img src="./images/PlaygroundImage.jpg" alt="Your Profile" class="hero-img">
             </div>
         </div>
     </section>
@@ -1247,85 +1329,6 @@
         </div>
     </footer>
     
-    <style>
-        /* Typing animation styles */
-        .typing-container {
-            display: inline-flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        #typed-name {
-            color: var(--primary-color);
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid var(--primary-color);
-            width: 0;
-            animation: 
-                typing 1.2s steps(7, end) forwards, 
-                blink 0.75s step-end infinite,
-                waitAndReset 25s infinite;
-            letter-spacing: -0.5px; /* Reduce spacing between letters */
-            text-shadow: 0 0 10px var(--primary-color);
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 6.5ch } /* Slightly reduced to account for letter spacing */
-        }
-        
-        @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-color) }
-        }
-        
-        @keyframes waitAndReset {
-            0%, 5% { width: 0 }
-            15%, 85% { width: 6.5ch }
-            95%, 100% { width: 0 }
-        }
-        
-        /* Matrix-like animation in the background */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            pointer-events: none;
-        }
-        
-        /* Fix for technology cells */
-        .tech-item {
-            display: flex;
-            align-items: center;
-            background-color: white !important;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #d0d0d0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
-        }
-        
-        .tech-icon {
-            margin-right: 1rem;
-            width: 40px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .tech-name {
-            font-weight: 900 !important;
-            font-size: 1.1rem !important;
-            color: #000000 !important;
-            letter-spacing: 0.5px;
-            font-family: Arial, sans-serif !important;
-            text-shadow: none !important;
-        }
-    </style>
     <script>
         // Matrix-like animation
         document.addEventListener('DOMContentLoaded', function() {
